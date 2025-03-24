@@ -98,7 +98,7 @@ class Database
             $posts[] = [
                 'user_id' => rand(1, 10),
                 'title' => 'Post ' . $i,
-                'content' => bin2hex(random_bytes(200)),
+                'content' => bin2hex(random_bytes(50)). ' '. bin2hex(random_bytes(50)). ' '. bin2hex(random_bytes(50)). ' '. bin2hex(random_bytes(50)),
                 'publish_at' => date('Y-m-d H:i:s', strtotime('+' . $i . ' days'))
             ];
         }
