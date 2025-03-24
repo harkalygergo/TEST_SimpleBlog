@@ -3,6 +3,8 @@
 namespace App;
 
 use App\Controller\HomepageController;
+use App\Model\BaseModel;
+use Smarty\Smarty;
 
 class App
 {
@@ -23,9 +25,22 @@ class App
             $this->database->loadDemoData();
         }
 
-        // call HomepageController and its method index
-        $homepageController = new HomepageController();
-        $homepageController->index();
+        if (!isset($_GET['url'])) {
+            $homepageController = new HomepageController();
+            $homepageController->index();
+        } else {
+            $baseModel = new BaseModel();
+            $post = $baseModel->findBySlug($_GET['url']);
+
+            $smarty = new Smarty();
+            $smarty->setTemplateDir(__DIR__ . '/templates/frontend');
+            $smarty->setCompileDir(__DIR__ . '/var/smarty/compile');
+            $smarty->setCacheDir(__DIR__ . '/var/smarty/cache');
+            $smarty->setConfigDir(__DIR__ . '/var/smarty/config');
+
+            $smarty->assign('post', $post);
+            $smarty->display('frontend/post.tpl');
+        }
     }
 
     public function debug()
