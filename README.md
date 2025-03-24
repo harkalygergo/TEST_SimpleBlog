@@ -1,5 +1,29 @@
 # PHP fejlesztő tesztfeladat
-###### v2025.03.24.1
+###### v2025.03.24.2
+
+---
+
+## Minimum requirements
+
+- PHP 8.0
+- MySQL 7
+- Smarty 3
+- Bootstrap 5
+- Composer 2
+
+---
+
+## How to install?
+
+1. clone source code from GitHub
+1. copy `.env.dist` to `.env` and modify
+1. run `composer install` command
+1. generate autoloading files with `composer dump-autoload -o`
+1. point domain name to `public` directory
+1. init database with `createDatabase` URL GET parameter, eg. `http://localhost/?createDatabase`
+1. load demo data with `loadDemoData` URL GET parameter, eg. `http://localhost/?loadDemoData`
+ 
+---
 
 ## Feladatkiírás
 
