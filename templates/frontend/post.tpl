@@ -3,16 +3,31 @@
 {block name=body}
     <div class="container-fluid">
         <div class="row">
-            <div class="col">
+            <div class="col-md-12">
+                <h1 class="page-title">Blog</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <h3>Legutóbbi bejegyzések</h3>
+                <ul>
+                    {foreach $posts as $post}
+                        <li>
+                            <a href="{$post.slug}">{$post.title}</a>
+                        </li>
+                    {/foreach}
+                </ul>
+            </div>
+            <div class="col-9">
                 <h1>{$post.title}</h1>
                 <p>
                     <small>
-                        {$post.author}
-                        | {$post.created_at|date_format:"%Y-%m-%d %H:%M:%S"}
-                        | {$post.updated_at|date_format:"%Y-%m-%d %H:%M:%S"}
+                        <i class="bi bi-person"></i> {$post.author}
+                        <i class="bi bi-calendar"></i> {$post.created_at|date_format:"%Y-%m-%d %H:%M:%S"}
+                        <i class="bi bi-calendar-plus"></i> {$post.updated_at|date_format:"%Y-%m-%d %H:%M:%S"}
                     </small>
                 </p>
-                {$post.content}
+                {$post.content|nl2br}
             </div>
         </div>
     </div>

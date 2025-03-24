@@ -1,5 +1,5 @@
 # PHP fejlesztő tesztfeladat
-###### v2025.03.24.11
+###### v2025.03.24.12
 
 ---
 
@@ -20,9 +20,9 @@
 1. run `composer install` command
 1. generate autoloading files with `composer dump-autoload -o`
 1. point domain name to `public` directory
-1. init database with `createDatabase` URL GET parameter, eg. `http://localhost/?createDatabase`
+1. init database with `action=createDatabase` URL GET parameter, eg. `http://localhost/?action=createDatabase`
 
-+1 optional: load demo data with `loadDemoData` URL GET parameter, eg. `http://localhost/?loadDemoData`
++1 optional: load demo data with `action=loadDemoData` URL GET parameter, eg. `http://localhost/?action=loadDemoData`
  
 ---
 
