@@ -77,7 +77,7 @@ class PostModel extends BaseModel
             SELECT p.*, u.email as author
             FROM {$this->table} p
             JOIN users u ON p.user_id = u.id
-            ORDER BY p.created_at DESC
+            ORDER BY p.publish_at DESC
         ");
 
         $stmt->execute();

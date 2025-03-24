@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Cocur\Slugify\Slugify;
 use PDO;
 use PDOException;
 
@@ -56,6 +57,7 @@ class Database
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 user_id INT NOT NULL,
                 title VARCHAR(255) NOT NULL,
+                slug VARCHAR(255) NOT NULL,
                 content TEXT NOT NULL,
                 created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
                 update_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -77,6 +79,8 @@ class Database
 
     public function loadDemoData()
     {
+        $slugify = new Slugify();
+
         // empty users and posts tables
         $this->connection()->exec("
             SET FOREIGN_KEY_CHECKS = 0;
@@ -95,9 +99,11 @@ class Database
 
         $posts = [];
         for ($i = 0; $i < 10; $i++) {
+            $title = 'Post ' . $i. ' '. bin2hex(random_bytes(8));
             $posts[] = [
                 'user_id' => rand(1, 10),
-                'title' => 'Post ' . $i,
+                'title' => $title,
+                'slug' => $slugify->slugify($title),
                 'content' => bin2hex(random_bytes(50)). ' '. bin2hex(random_bytes(50)). ' '. bin2hex(random_bytes(50)). ' '. bin2hex(random_bytes(50)),
                 'publish_at' => date('Y-m-d H:i:s', strtotime('+' . $i . ' days'))
             ];
@@ -111,7 +117,7 @@ class Database
 
         foreach ($posts as $post) {
             $this->connection()->exec("
-                INSERT INTO posts (user_id, title, content, publish_at) VALUES ('{$post['user_id']}', '{$post['title']}', '{$post['content']}', '{$post['publish_at']}');
+                INSERT INTO posts (user_id, title, slug, content, publish_at) VALUES ('{$post['user_id']}', '{$post['title']}','{$post['slug']}', '{$post['content']}', '{$post['publish_at']}');
             ");
         }
 
