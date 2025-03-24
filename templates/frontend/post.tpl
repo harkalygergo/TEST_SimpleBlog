@@ -1,10 +1,14 @@
 {extends file='../base.tpl'}
 
 {block name=body}
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="page-title">Blog</h1>
+                <h1 class="page-title">
+                    <a href="/" class="text-dark text-decoration-none display-1">
+                        Blog
+                    </a>
+                </h1>
             </div>
         </div>
         <div class="row">

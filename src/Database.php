@@ -112,7 +112,7 @@ class Database
                 'user_id' => rand(1, 10),
                 'title' => $title,
                 'slug' => $slugify->slugify($title),
-                'content' => bin2hex(random_bytes(50)). ' '. bin2hex(random_bytes(50)). ' '. bin2hex(random_bytes(50)). ' '. bin2hex(random_bytes(50)),
+                'content' => bin2hex(random_bytes(24)). ' '. bin2hex(random_bytes(24)). ' '. bin2hex(random_bytes(24)). ' '. bin2hex(random_bytes(24)). ' '. bin2hex(random_bytes(24)).' '.bin2hex(random_bytes(24)). ' '. bin2hex(random_bytes(24)). ' '. bin2hex(random_bytes(24)). ' '. bin2hex(random_bytes(24)). ' '. bin2hex(random_bytes(24)),
                 'published_at' => date('Y-m-d H:i:s', strtotime('+' . $i . ' days'))
             ];
         }

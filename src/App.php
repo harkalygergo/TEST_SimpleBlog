@@ -4,6 +4,7 @@ namespace App;
 
 use App\Controller\HomepageController;
 use App\Model\BaseModel;
+use App\Model\PostModel;
 use Smarty\Smarty;
 
 class App
@@ -39,7 +40,6 @@ class App
             $baseModel->setTable('posts');
             $post = $baseModel->findBySlug($_GET['url']);
 
-
             $smarty = new Smarty();
             $smarty->setTemplateDir(__DIR__ . '/../templates/frontend');
             $smarty->setCompileDir(__DIR__ . '/../var/smarty/compile');
@@ -47,6 +47,7 @@ class App
             $smarty->setConfigDir(__DIR__ . '/../var/smarty/config');
 
             $smarty->assign('post', $post);
+            $smarty->assign('posts', (new PostModel())->getAllPostsWithAuthors());
             $smarty->display('post.tpl');
         }
 
