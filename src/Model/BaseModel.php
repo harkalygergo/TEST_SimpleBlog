@@ -14,6 +14,11 @@ class BaseModel
         $this->db = (new Database())->connection();
     }
 
+    public function setTable($table)
+    {
+        $this->table = $table;
+    }
+
     public function findAll()
     {
         $stmt = $this->db->prepare("SELECT * FROM {$this->table}");
@@ -32,7 +37,7 @@ class BaseModel
     }
 
     // create find by slug method for posts
-    public function findBySlug($slug)
+    public function findBySlug(string $slug)
     {
         $stmt = $this->db->prepare("SELECT * FROM {$this->table} WHERE slug = :slug");
         $stmt->bindParam(':slug', $slug, PDO::PARAM_STR);

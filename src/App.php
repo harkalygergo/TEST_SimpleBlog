@@ -30,6 +30,7 @@ class App
             $homepageController->index();
         } else {
             $baseModel = new BaseModel();
+            $baseModel->setTable('posts');
             $post = $baseModel->findBySlug($_GET['url']);
 
             $smarty = new Smarty();
