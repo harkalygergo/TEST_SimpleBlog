@@ -33,14 +33,15 @@ class App
             $baseModel->setTable('posts');
             $post = $baseModel->findBySlug($_GET['url']);
 
+
             $smarty = new Smarty();
-            $smarty->setTemplateDir(__DIR__ . '/templates/frontend');
-            $smarty->setCompileDir(__DIR__ . '/var/smarty/compile');
-            $smarty->setCacheDir(__DIR__ . '/var/smarty/cache');
-            $smarty->setConfigDir(__DIR__ . '/var/smarty/config');
+            $smarty->setTemplateDir(__DIR__ . '/../../templates/frontend');
+            $smarty->setCompileDir(__DIR__ . '/../../var/smarty/compile');
+            $smarty->setCacheDir(__DIR__ . '/../../var/smarty/cache');
+            $smarty->setConfigDir(__DIR__ . '/../../var/smarty/config');
 
             $smarty->assign('post', $post);
-            $smarty->display('frontend/post.tpl');
+            $smarty->display('post.tpl');
         }
     }
 
