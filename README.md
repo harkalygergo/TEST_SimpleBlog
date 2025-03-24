@@ -1,5 +1,5 @@
 # PHP fejlesztő tesztfeladat
-###### v2025.03.24.9
+###### v2025.03.24.10
 
 ---
 
@@ -38,8 +38,8 @@ Felületek:
 - Admin felület:
   - Bejelentkezés aktív felhasználóként (logout is).
   - Az Admin felületen 2 egyszerű CRUD-ra van szükség:
-  - Felhasználók kezelése
-  - Blog posztok kezelése
+    - Felhasználók kezelése
+    - Blog posztok kezelése
 
 Használandó technológiák:
 - PHP - objektum orientált programozás

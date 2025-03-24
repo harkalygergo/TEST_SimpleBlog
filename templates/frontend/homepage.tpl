@@ -9,7 +9,7 @@
                         <h2>{$post.title}</h2>
                         <p>{$post.content}</p>
                         <p>{$post.author}</p>
-                        <a class="btn btn-primary" href="#">elolvasom</a>
+                        <a class="btn btn-primary" href="{$post.slug}">elolvasom</a>
                         <hr>
                     </article>
                 </div>
