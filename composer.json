@@ -1,0 +1,20 @@
+{
+  "name": "harkalygergo/test_simpleblog",
+  "description": "PHP fejlesztő tesztfeladat",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Harkály Gergő"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "require": {
+    "smarty/smarty": "5.4.2",
+    "php": ">=8.0",
+    "ext-pdo": "*"
+  }
+}
