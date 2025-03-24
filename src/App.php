@@ -17,6 +17,20 @@ class App
 
         $this->debug();
 
+        if (isset($_GET['action'])) {
+            switch ($_GET['action']) {
+                case 'destroyTables':
+                    $this->database->destroyTables();
+                    break;
+                case 'createTables':
+                    $this->database->createTables();
+                    break;
+                case 'loadDemoData':
+                    $this->database->loadDemoData();
+                    break;
+            }
+        }
+
         if (!isset($_GET['url'])) {
             $homepageController = new HomepageController();
             $homepageController->index();
@@ -36,19 +50,6 @@ class App
             $smarty->display('post.tpl');
         }
 
-        if (isset($_GET['action'])) {
-            switch ($_GET['action']) {
-                case 'destroyTables':
-                    $this->database->destroyTables();
-                    break;
-                case 'createTables':
-                    $this->database->createTables();
-                    break;
-                case 'loadDemoData':
-                    $this->database->loadDemoData();
-                    break;
-            }
-        }
     }
 
     public function debug()

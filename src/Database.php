@@ -113,7 +113,7 @@ class Database
                 'title' => $title,
                 'slug' => $slugify->slugify($title),
                 'content' => bin2hex(random_bytes(50)). ' '. bin2hex(random_bytes(50)). ' '. bin2hex(random_bytes(50)). ' '. bin2hex(random_bytes(50)),
-                'publish_at' => date('Y-m-d H:i:s', strtotime('+' . $i . ' days'))
+                'published_at' => date('Y-m-d H:i:s', strtotime('+' . $i . ' days'))
             ];
         }
 
@@ -125,7 +125,7 @@ class Database
 
         foreach ($posts as $post) {
             $this->connection()->exec("
-                INSERT INTO posts (user_id, title, slug, content, publish_at) VALUES ('{$post['user_id']}', '{$post['title']}','{$post['slug']}', '{$post['content']}', '{$post['publish_at']}');
+                INSERT INTO posts (user_id, title, slug, content, published_at) VALUES ('{$post['user_id']}', '{$post['title']}','{$post['slug']}', '{$post['content']}', '{$post['published_at']}');
             ");
         }
 
