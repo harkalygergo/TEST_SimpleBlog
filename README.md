@@ -1,5 +1,5 @@
 # PHP fejlesztő tesztfeladat
-###### v2025.03.25.2
+###### v2025.03.25.3
 
 ---
 
@@ -30,6 +30,7 @@
 - [ ] belépés űrlap elé htpasswd védelem
 - [ ] sikertelen belépés számolás, meghatározott mennyiségnél tiltás egyre növekvő ideig
 - [ ] bejelentkezési helyek, eszközök mentése adatbázisba, kijelentkezés mindenhonnan funkció bevezetése
+- [ ] admin felületen biztosítani lehetőséget a honlap meta adatainak megadására
 
 ---
 
