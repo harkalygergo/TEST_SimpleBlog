@@ -2,19 +2,12 @@
 
 {block name=body}
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1 class="page-title">
-                    <a href="/" class="text-dark text-decoration-none display-1">
-                        Blog
-                    </a>
-                </h1>
-                <hr>
-            </div>
-        </div>
+
+        {include file='header.tpl'}
+
         <div class="row">
         {foreach $posts as $post}
-                <div class="col-6">
+                <div class="col-12 col-md-6">
                     <article class="p-4 mb-4 bg-light rounded">
                         <h2>{$post.title}</h2>
                         <p>

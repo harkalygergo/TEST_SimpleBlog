@@ -2,27 +2,11 @@
 
 {block name=body}
     <div class="container">
+
+        {include file='frontend/header.tpl'}
+
         <div class="row">
-            <div class="col-md-12">
-                <h1 class="page-title">
-                    <a href="/" class="text-dark text-decoration-none display-1">
-                        Blog
-                    </a>
-                </h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-3">
-                <h3>Legutóbbi bejegyzések</h3>
-                <ul>
-                    {foreach $posts as $post}
-                        <li>
-                            <a href="{$post.slug}">{$post.title}</a>
-                        </li>
-                    {/foreach}
-                </ul>
-            </div>
-            <div class="col-9">
+            <div class="col-12 col-lg-9">
                 <h1>{$post.title}</h1>
                 <p>
                     <small>
@@ -32,6 +16,16 @@
                     </small>
                 </p>
                 {$post.content|nl2br}
+            </div>
+            <div class="col-12 col-lg-3">
+                <h3>Legutóbbi bejegyzések</h3>
+                <ul>
+                    {foreach $posts as $post}
+                        <li>
+                            <a href="{$post.slug}">{$post.title}</a>
+                        </li>
+                    {/foreach}
+                </ul>
             </div>
         </div>
     </div>

@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col">
                 <h1>Bejelentkezés</h1>
-                <form action="login" method="post">
+                <form action="?action=login" method="post">
                     <div class="mb-3">
                         <label for="email" class="form-label">E-mail cím</label>
                         <input type="email" class="form-control" id="email" name="email">

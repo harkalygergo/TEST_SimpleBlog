@@ -1,5 +1,5 @@
 # PHP fejlesztő tesztfeladat
-###### v2025.03.25.4
+###### v2025.03.25.6
 
 ---
 
@@ -36,6 +36,7 @@
 - [ ] bejegyzések módosításánál WYSIWYG szerkesztő bevezetése az admin felületen
 - [ ] slug generálása automatikusan a beadott cím alapján JavaScript segítségével
 - [ ] Smarty mappa beállításokat kiszervezni dotenv-be
+- [ ] többnyelvűsítésre felkészíteni a rendszert a meglévő szövegrészek nyelvi fájlokba történő kiszervezésével
 
 ---
 
