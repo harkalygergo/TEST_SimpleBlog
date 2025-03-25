@@ -13,7 +13,7 @@ class AdminController
         $posts = $postModel->getAllPostsWithAuthors();
 
         $smarty = new Smarty();
-        $smarty->setTemplateDir(__DIR__ . '/../../templates/admin');
+        $smarty->setTemplateDir(__DIR__ . '/../../templates/backend');
         $smarty->setCompileDir(__DIR__ . '/../../var/smarty/compile');
         $smarty->setCacheDir(__DIR__ . '/../../var/smarty/cache');
         $smarty->setConfigDir(__DIR__ . '/../../var/smarty/config');
