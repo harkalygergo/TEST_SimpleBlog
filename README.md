@@ -35,6 +35,7 @@
 - [ ] bejegyzések közötti keresés lehetőségének megvalósítása frontenden
 - [ ] bejegyzések módosításánál WYSIWYG szerkesztő bevezetése az admin felületen
 - [ ] slug generálása automatikusan a beadott cím alapján JavaScript segítségével
+- [ ] Smarty mappa beállításokat kiszervezni dotenv-be
 
 ---
 
