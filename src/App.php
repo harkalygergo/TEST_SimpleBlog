@@ -71,10 +71,10 @@ class App
 
         } else {
             $smarty = new Smarty();
-            $smarty->setTemplateDir(__DIR__ . '/../../templates/backend');
-            $smarty->setCompileDir(__DIR__ . '/../../var/smarty/compile');
-            $smarty->setCacheDir(__DIR__ . '/../../var/smarty/cache');
-            $smarty->setConfigDir(__DIR__ . '/../../var/smarty/config');
+            $smarty->setTemplateDir(__DIR__ . '/../templates/backend');
+            $smarty->setCompileDir(__DIR__ . '/../var/smarty/compile');
+            $smarty->setCacheDir(__DIR__ . '/../var/smarty/cache');
+            $smarty->setConfigDir(__DIR__ . '/../var/smarty/config');
 
             $smarty->display('login.tpl');
         }
