@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Controller\AdminController;
 use App\Controller\HomepageController;
 use App\Model\BaseModel;
 use App\Model\PostModel;
@@ -36,19 +37,25 @@ class App
             $homepageController = new HomepageController();
             $homepageController->index();
         } else {
-            $baseModel = new BaseModel();
-            $baseModel->setTable('posts');
-            $post = $baseModel->findBySlug($_GET['url']);
 
-            $smarty = new Smarty();
-            $smarty->setTemplateDir(__DIR__ . '/../templates/frontend');
-            $smarty->setCompileDir(__DIR__ . '/../var/smarty/compile');
-            $smarty->setCacheDir(__DIR__ . '/../var/smarty/cache');
-            $smarty->setConfigDir(__DIR__ . '/../var/smarty/config');
+            if ($_GET['url'] === 'admin') {
+               $adminController = new AdminController();
+                $adminController->index();
+            } else {
+                $baseModel = new BaseModel();
+                $baseModel->setTable('posts');
+                $post = $baseModel->findBySlug($_GET['url']);
 
-            $smarty->assign('post', $post);
-            $smarty->assign('posts', (new PostModel())->getAllPostsWithAuthors());
-            $smarty->display('post.tpl');
+                $smarty = new Smarty();
+                $smarty->setTemplateDir(__DIR__ . '/../templates/frontend');
+                $smarty->setCompileDir(__DIR__ . '/../var/smarty/compile');
+                $smarty->setCacheDir(__DIR__ . '/../var/smarty/cache');
+                $smarty->setConfigDir(__DIR__ . '/../var/smarty/config');
+
+                $smarty->assign('post', $post);
+                $smarty->assign('posts', (new PostModel())->getAllPostsWithAuthors());
+                $smarty->display('post.tpl');
+            }
         }
 
     }

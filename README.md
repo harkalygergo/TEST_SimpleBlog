@@ -1,5 +1,5 @@
 # PHP fejlesztő tesztfeladat
-###### v2025.03.25.1
+###### v2025.03.25.2
 
 ---
 
@@ -26,10 +26,10 @@
 
 ## TODO - További fejlesztési lehetőségek
 
-- [] belépés URL-t elrejteni vagy nem egyértelművé változtatni
-- [] belépés űrlap elé htpasswd védelem
-- [] sikertelen belépés számolás, meghatározott mennyiségnél tiltás egyre növekvő ideig
-- [] bejelentkezési helyek, eszközök mentése adatbázisba, kijelentkezés mindenhonnan funkció bevezetése
+- [ ] belépés URL-t elrejteni vagy nem egyértelművé változtatni
+- [ ] belépés űrlap elé htpasswd védelem
+- [ ] sikertelen belépés számolás, meghatározott mennyiségnél tiltás egyre növekvő ideig
+- [ ] bejelentkezési helyek, eszközök mentése adatbázisba, kijelentkezés mindenhonnan funkció bevezetése
 
 ---
 
