@@ -1,5 +1,5 @@
 # PHP fejlesztő tesztfeladat
-###### v2025.03.24.13
+###### v2025.03.25.1
 
 ---
 
@@ -7,8 +7,6 @@
 
 - PHP 8.0
 - MySQL 7
-- Smarty 3
-- Bootstrap 5
 - Composer 2
 
 ---
@@ -24,6 +22,15 @@
 
 +1 optional: load demo data with `action=loadDemoData` URL GET parameter, eg. `http://localhost/?action=loadDemoData`
  
+---
+
+## TODO - További fejlesztési lehetőségek
+
+- [] belépés URL-t elrejteni vagy nem egyértelművé változtatni
+- [] belépés űrlap elé htpasswd védelem
+- [] sikertelen belépés számolás, meghatározott mennyiségnél tiltás egyre növekvő ideig
+- [] bejelentkezési helyek, eszközök mentése adatbázisba, kijelentkezés mindenhonnan funkció bevezetése
+
 ---
 
 ## Feladatkiírás
