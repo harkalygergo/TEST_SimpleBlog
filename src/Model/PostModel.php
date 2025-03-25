@@ -60,7 +60,7 @@ class PostModel extends BaseModel
     public function getPostWithAuthor($id)
     {
         $stmt = $this->db->prepare("
-            SELECT p.*, u.username as author
+            SELECT p.*, u.email as author
             FROM {$this->table} p
             JOIN users u ON p.user_id = u.id
             WHERE p.id = :id

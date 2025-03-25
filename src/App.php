@@ -23,18 +23,17 @@ class App
             switch ($_GET['action']) {
                 case 'login':
                     $this->login();
-                    break;
+                    exit;
                 case 'destroyTables':
                     $this->database->destroyTables();
-                    break;
+                    exit;
                 case 'createTables':
                     $this->database->createTables();
-                    break;
+                    exit;
                 case 'loadDemoData':
                     $this->database->loadDemoData();
-                    break;
+                    exit;
             }
-            exit;
         }
 
         if (!isset($_GET['url'])) {
