@@ -43,13 +43,4 @@ class BaseModel
 
         return $stmt->execute();
     }
-
-    public function findBySlug(string $slug)
-    {
-        $stmt = $this->db->prepare("SELECT * FROM {$this->table} WHERE slug = :slug");
-        $stmt->bindParam(':slug', $slug, PDO::PARAM_STR);
-        $stmt->execute();
-
-        return $stmt->fetch();
-    }
 }

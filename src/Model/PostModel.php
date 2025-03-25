@@ -78,4 +78,19 @@ class PostModel extends BaseModel
         $stmt->execute();
         return $stmt->fetchAll();
     }
+
+    public function findBySlug(string $slug)
+    {
+        $stmt = $this->db->prepare("
+            SELECT p.*, u.email as author
+            FROM {$this->table} p 
+            JOIN users u ON p.user_id = u.id
+            WHERE slug = :slug
+        ");
+        $stmt->bindParam(':slug', $slug, PDO::PARAM_STR);
+        $stmt->execute();
+
+        return $stmt->fetch();
+    }
+
 }
