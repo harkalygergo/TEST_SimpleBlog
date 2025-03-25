@@ -5,6 +5,7 @@ namespace App;
 use App\Controller\AdminController;
 use App\Controller\HomepageController;
 use App\Controller\PostController;
+use App\Model\UserModel;
 use Smarty\Smarty;
 
 class App
@@ -33,6 +34,7 @@ class App
                     $this->database->loadDemoData();
                     break;
             }
+            exit;
         }
 
         if (!isset($_GET['url'])) {
@@ -61,10 +63,12 @@ class App
     public function login()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if ($_POST['username'] === 'admin' && $_POST['password'] === 'admin') {
+            $userModel = new UserModel();
+            $user = $userModel->findByEmailAndPassword($_POST['email'], $_POST['password']);
+
+            if ($user) {
                 $_SESSION['user'] = 'admin';
                 header('Location: /admin');
-
             } else {
                 echo 'Hibás felhasználónév vagy jelszó!';
             }
