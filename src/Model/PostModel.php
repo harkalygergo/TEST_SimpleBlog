@@ -10,11 +10,12 @@ class PostModel extends BaseModel
     public function create($data)
     {
         $stmt = $this->db->prepare("
-            INSERT INTO {$this->table} (title, content, user_id, created_at) 
-            VALUES (:title, :content, :user_id, NOW())
+            INSERT INTO {$this->table} (title, slug, content, user_id, created_at) 
+            VALUES (:title, :slug, :content, :user_id, NOW())
         ");
 
         $stmt->bindParam(':title', $data['title']);
+        $stmt->bindParam(':slug', $data['slug']);
         $stmt->bindParam(':content', $data['content']);
         $stmt->bindParam(':user_id', $data['user_id'], PDO::PARAM_INT);
         $stmt->execute();

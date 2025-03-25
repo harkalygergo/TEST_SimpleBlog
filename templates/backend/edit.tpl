@@ -21,8 +21,8 @@
                     <input type="text" class="form-control" id="title" name="title" value="{$post.title}">
                 </div>
                 <div class="mb-3">
-                    <label for="author" class="form-label">Szerző</label>
-                    <input type="text" class="form-control" id="author" name="author" value="{$post.author}">
+                    <label for="slug" class="form-label">Slug</label>
+                    <input type="text" class="form-control" id="slug" name="slug" value="{$post.slug}">
                 </div>
                 <div class="mb-3">
                     <label for="content" class="form-label">Tartalom</label>

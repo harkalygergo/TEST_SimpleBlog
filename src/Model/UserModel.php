@@ -24,4 +24,12 @@ class UserModel extends BaseModel
 
         return $user;
     }
+
+    public function getAll()
+    {
+        $stmt = $this->db->prepare("SELECT * FROM users");
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
 }

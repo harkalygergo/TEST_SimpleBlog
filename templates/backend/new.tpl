@@ -15,18 +15,27 @@
                 </div>
 
                 <form action="?action=create&id={$post.id}" method="post">
-                    <input type="hidden" name="id" value="{$post.id}">
+                    <input type="hidden" name="id" value="">
                     <div class="mb-3">
                         <label for="title" class="form-label">Cím</label>
-                        <input type="text" class="form-control" id="title" name="title" value="{$post.title}">
+                        <input type="text" class="form-control" id="title" name="title" value="">
                     </div>
                     <div class="mb-3">
-                        <label for="author" class="form-label">Szerző</label>
-                        <input type="text" class="form-control" id="author" name="author" value="{$post.author}">
+                        <label for="slug" class="form-label">Slug</label>
+                        <input type="text" class="form-control" id="slug" name="slug" value="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="user_id" class="form-label">Szerző</label>
+                        <select class="form-select" id="user_id" name="user_id" required>
+                            <option value="">Válassz...</option>
+                            {foreach from=$users item=user}
+                                <option value="{$user.id}">{$user.email}</option>
+                            {/foreach}
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="content" class="form-label">Tartalom</label>
-                        <textarea class="form-control" id="content" name="content" rows="10">{$post.content}</textarea>
+                        <textarea class="form-control" id="content" name="content" rows="10"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Mentés</button>
                 </form>

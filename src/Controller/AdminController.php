@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\PostModel;
+use App\Model\UserModel;
 use Smarty\Smarty;
 
 class AdminController
@@ -53,7 +54,10 @@ class AdminController
                         $smarty->setCacheDir(__DIR__ . '/../../var/smarty/cache');
                         $smarty->setConfigDir(__DIR__ . '/../../var/smarty/config');
 
+                        $users = (new UserModel())->getAll();
+
                         $smarty->assign('title', 'Bejegyzés létrehozása');
+                        $smarty->assign('users', $users);
                         $smarty->display('new.tpl');
                     }
                     break;
