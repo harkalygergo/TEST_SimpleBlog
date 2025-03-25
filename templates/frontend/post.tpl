@@ -3,7 +3,7 @@
 {block name=body}
     <div class="container">
 
-        {include file='frontend/header.tpl'}
+        {include file='header.tpl'}
 
         <div class="row">
             <div class="col-12 col-lg-9">

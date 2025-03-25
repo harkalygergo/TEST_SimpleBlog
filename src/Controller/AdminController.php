@@ -9,10 +9,12 @@ class AdminController
 {
     public function __construct()
     {
+        /*
         if (!isset($_SESSION['user'])) {
             header('Location: /');
             exit;
         }
+        */
 
         if (isset($_GET['action'])) {
             switch ($_GET['action']) {
