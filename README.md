@@ -1,5 +1,5 @@
 # PHP fejlesztő tesztfeladat
-###### v2025.03.25.3
+###### v2025.03.25.4
 
 ---
 
@@ -31,6 +31,10 @@
 - [ ] sikertelen belépés számolás, meghatározott mennyiségnél tiltás egyre növekvő ideig
 - [ ] bejelentkezési helyek, eszközök mentése adatbázisba, kijelentkezés mindenhonnan funkció bevezetése
 - [ ] admin felületen biztosítani lehetőséget a honlap meta adatainak megadására
+- [ ] kategóriák létrehozása a bejegyzésekhez
+- [ ] bejegyzések közötti keresés lehetőségének megvalósítása frontenden
+- [ ] bejegyzések módosításánál WYSIWYG szerkesztő bevezetése az admin felületen
+- [ ] slug generálása automatikusan a beadott cím alapján JavaScript segítségével
 
 ---
 
