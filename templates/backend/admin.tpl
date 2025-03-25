@@ -34,7 +34,7 @@
                         <ul class="nav flex-column">
                             <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="/admin?page=users">
-                                    <i class="bi bi-peoples"></i>
+                                    <i class="bi bi-people"></i>
                                     Felhasználók
                                 </a>
                             </li>
@@ -54,13 +54,10 @@
                     <h1 class="h2">Vezérlőpult</h1>
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <div class="btn-group me-2">
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary">
+                                <i class="bi bi-plus"></i> új hozzáadása
+                            </button>
                         </div>
-                        <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1">
-                            <svg class="bi"><use xlink:href="#calendar3"/></svg>
-                            This week
-                        </button>
                     </div>
                 </div>
 
@@ -78,8 +75,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                {foreach $posts as $post}
+                            {foreach $posts as $post}
+                                <tr>
                                     <td>{$smarty.foreach.posts.index + 1}</td>
                                     <td>{$post.title}</td>
                                     <td>{$post.author}</td>
@@ -93,8 +90,8 @@
                                             <i class="bi bi-delete"></i> Törlés
                                         </a>
                                     </td>
-                                {/foreach}
-                            </tr>
+                                </tr>
+                            {/foreach}
                         </tbody>
                     </table>
                 </div>
