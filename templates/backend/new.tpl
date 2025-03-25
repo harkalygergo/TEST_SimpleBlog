@@ -2,12 +2,12 @@
 
 {block name=body}
     <!-- include header.tpl -->
-    {include file='backend/header.tpl'}
+    {include file='header.tpl'}
 
     <div class="container-fluid">
         <div class="row">
 
-            {include file='backend/sidebar.tpl'}
+            {include file='sidebar.tpl'}
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
