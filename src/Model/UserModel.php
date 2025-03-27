@@ -3,9 +3,68 @@
 namespace App\Model;
 
 use PDO;
+use Smarty\Smarty;
 
 class UserModel extends BaseModel
 {
+    protected $table = 'users';
+
+    public function edit()
+    {
+        $user = $this->findById($_GET['id']);
+
+        $smarty = new Smarty();
+        $smarty->setTemplateDir(__DIR__ . '/../../templates/backend');
+        $smarty->setCompileDir(__DIR__ . '/../../var/smarty/compile');
+        $smarty->setCacheDir(__DIR__ . '/../../var/smarty/cache');
+        $smarty->setConfigDir(__DIR__ . '/../../var/smarty/config');
+
+        $smarty->assign('user', $user);
+        $smarty->display('user/edit.tpl');
+    }
+
+    public function create($data)
+    {
+        $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+
+        $stmt = $this->db->prepare("
+            INSERT INTO {$this->table} (email, password) 
+            VALUES (:email, :password)
+        ");
+
+        $stmt->bindParam(':email', $data['email']);
+        $stmt->bindParam(':password', $data['password']);
+        $stmt->execute();
+
+        return $this->db->lastInsertId();
+    }
+
+    public function update($id, $data)
+    {
+        if ($data['password'] !== '') {
+            $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+            $stmt = $this->db->prepare("
+                UPDATE {$this->table} 
+                SET password = :password
+                WHERE id = :id
+            ");
+            $stmt->bindParam(':password', $data['password']);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+        }
+
+        $stmt = $this->db->prepare("
+            UPDATE {$this->table} 
+            SET email = :email
+            WHERE id = :id
+        ");
+
+        $stmt->bindParam(':email', $data['email']);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+        return $stmt->execute();
+    }
+
     public function findByEmailAndPassword($email, $password)
     {
         $stmt = $this->db->prepare("SELECT * FROM users WHERE email = :email");

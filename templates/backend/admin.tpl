@@ -17,7 +17,16 @@
 
                 <hr>
 
-                <h3>Felhasználók</h3>
+                <div class="row">
+                    <div class="col">
+                        <h3>Felhasználók</h3>
+                    </div>
+                    <div class="col text-end">
+                        <a href="?action=create&type=user" type="button" class="btn btn-sm btn-outline-success">
+                            <i class="bi bi-plus"></i> új hozzáadása
+                        </a>
+                    </div>
+                </div>
                 <div class="table-responsive small">
                     <table class="table table-striped table-sm">
                         <thead>
@@ -45,10 +54,10 @@
 
 
                                 <td class="text-end">
-                                    <a class="btn btn-sm btn-primary" href="?action=edit&id={$user.id}">
+                                    <a class="btn btn-sm btn-primary" href="?action=edit&type=user&id={$user.id}">
                                         <i class="bi bi-pen"></i> Szerkesztés
                                     </a>
-                                    <a class="btn btn-sm btn-secondary" href="?action=delete&id={$user.id}">
+                                    <a class="btn btn-sm btn-secondary" href="?action=delete&type=user&id={$user.id}">
                                         <i class="bi bi-trash"></i> Törlés
                                     </a>
                                 </td>
@@ -65,7 +74,7 @@
                         <h3>Bejegyzések</h3>
                     </div>
                     <div class="col text-end">
-                        <a href="?action=create" type="button" class="btn btn-sm btn-outline-success">
+                        <a href="?action=create&type=post" type="button" class="btn btn-sm btn-outline-success">
                             <i class="bi bi-plus"></i> új hozzáadása
                         </a>
                     </div>
@@ -93,10 +102,10 @@
                                     <td>{$post.created_at|date_format:"%Y-%m-%d %H:%M:%S"}</td>
                                     <td>{$post.updated_at|date_format:"%Y-%m-%d %H:%M:%S"}</td>
                                     <td class="text-end">
-                                        <a class="btn btn-sm btn-primary" href="?action=edit&id={$post.id}">
+                                        <a class="btn btn-sm btn-primary" href="?action=edit&type=post&id={$post.id}">
                                             <i class="bi bi-pen"></i> Szerkesztés
                                         </a>
-                                        <a class="btn btn-sm btn-secondary" href="?action=delete&id={$post.id}">
+                                        <a class="btn btn-sm btn-secondary" href="?action=delete&type=post&id={$post.id}">
                                             <i class="bi bi-trash"></i> Törlés
                                         </a>
                                     </td>

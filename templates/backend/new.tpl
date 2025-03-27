@@ -14,7 +14,7 @@
                     <h1 class="h2">{$title}</h1>
                 </div>
 
-                <form action="?action=create&id={$post.id}" method="post">
+                <form action="?action=create&type=post&id={$post.id}" method="post">
                     <input type="hidden" name="id" value="">
                     <div class="mb-3">
                         <label for="title" class="form-label">Cím</label>

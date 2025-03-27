@@ -2,10 +2,25 @@
 namespace App\Model;
 
 use PDO;
+use Smarty\Smarty;
 
 class PostModel extends BaseModel
 {
     protected $table = 'posts';
+
+    public function edit()
+    {
+        $post = $this->getPostWithAuthor($_GET['id']);
+
+        $smarty = new Smarty();
+        $smarty->setTemplateDir(__DIR__ . '/../../templates/backend');
+        $smarty->setCompileDir(__DIR__ . '/../../var/smarty/compile');
+        $smarty->setCacheDir(__DIR__ . '/../../var/smarty/cache');
+        $smarty->setConfigDir(__DIR__ . '/../../var/smarty/config');
+
+        $smarty->assign('post', $post);
+        $smarty->display('edit.tpl');
+    }
 
     public function create($data)
     {

@@ -24,48 +24,78 @@ class AdminController
                     header('Location: /');
                     break;
                 case 'edit':
-                    $postModel = new PostModel();
-                    $post = $postModel->getPostWithAuthor($_GET['id']);
-
-                    $smarty = new Smarty();
-                    $smarty->setTemplateDir(__DIR__ . '/../../templates/backend');
-                    $smarty->setCompileDir(__DIR__ . '/../../var/smarty/compile');
-                    $smarty->setCacheDir(__DIR__ . '/../../var/smarty/cache');
-                    $smarty->setConfigDir(__DIR__ . '/../../var/smarty/config');
-
-                    $smarty->assign('post', $post);
-                    $smarty->display('edit.tpl');
+                    switch ($_GET['type']) {
+                        case 'user':
+                            (new UserModel())->edit();
+                            break;
+                        case 'post':
+                            (new PostModel())->edit();
+                            break;
+                    }
                     break;
                 case 'delete':
-                    $postModel = new PostModel();
-                    $postModel->delete($_GET['id']);
+                    switch($_GET['type']) {
+                        case 'user':
+                            (new UserModel())->delete($_GET['id']);
+                            break;
+                        case 'post':
+                            (new PostModel())->delete($_GET['id']);
+                            break;
+                    }
                     header('Location: /admin');
                     break;
                 case 'create':
-                    // add new post with posted data
-                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                        $postModel = new PostModel();
-                        $postModel->create($_POST);
-                        header('Location: /admin');
-                    } else {
-                        $smarty = new Smarty();
-                        $smarty->setTemplateDir(__DIR__ . '/../../templates/backend');
-                        $smarty->setCompileDir(__DIR__ . '/../../var/smarty/compile');
-                        $smarty->setCacheDir(__DIR__ . '/../../var/smarty/cache');
-                        $smarty->setConfigDir(__DIR__ . '/../../var/smarty/config');
+                    switch ($_GET['type']) {
+                        case 'user':
+                            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                                $userModel = new UserModel();
+                                $userModel->create($_POST);
+                                header('Location: /admin');
+                            } else {
+                                $smarty = new Smarty();
+                                $smarty->setTemplateDir(__DIR__ . '/../../templates/backend');
+                                $smarty->setCompileDir(__DIR__ . '/../../var/smarty/compile');
+                                $smarty->setCacheDir(__DIR__ . '/../../var/smarty/cache');
+                                $smarty->setConfigDir(__DIR__ . '/../../var/smarty/config');
 
-                        $users = (new UserModel())->getAll();
+                                $smarty->assign('title', 'Felhasználó létrehozása');
+                                $smarty->display('user/create.tpl');
+                            }
+                            break;
+                        case 'post':
+                            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                                $postModel = new PostModel();
+                                $postModel->create($_POST);
+                                header('Location: /admin');
+                            } else {
+                                $smarty = new Smarty();
+                                $smarty->setTemplateDir(__DIR__ . '/../../templates/backend');
+                                $smarty->setCompileDir(__DIR__ . '/../../var/smarty/compile');
+                                $smarty->setCacheDir(__DIR__ . '/../../var/smarty/cache');
+                                $smarty->setConfigDir(__DIR__ . '/../../var/smarty/config');
 
-                        $smarty->assign('title', 'Bejegyzés létrehozása');
-                        $smarty->assign('users', $users);
-                        $smarty->display('new.tpl');
+                                $users = (new UserModel())->getAll();
+
+                                $smarty->assign('title', 'Bejegyzés létrehozása');
+                                $smarty->assign('users', $users);
+                                $smarty->display('new.tpl');
+                            }
+                            break;
                     }
                     break;
                 case 'update':
                     // update post with posted data
                     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                        $postModel = new PostModel();
-                        $postModel->update($_POST['id'], $_POST);
+                        switch ($_GET['type']) {
+                            case 'user':
+                                $userModel = new UserModel();
+                                $userModel->update($_GET['id'], $_POST);
+                                break;
+                            case 'post':
+                                $postModel = new PostModel();
+                                $postModel->update($_GET['id'], $_POST);
+                                break;
+                        }
                         header('Location: /admin');
                     } else {
                         $this->index();
