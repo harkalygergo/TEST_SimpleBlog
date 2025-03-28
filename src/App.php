@@ -61,7 +61,7 @@ class App
 
     public function login()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_POST['password']) && $_POST['honeypot']==='') {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_POST['password']) && $_POST['honeypot']==='' && $_POST['captcha3'] === $_POST['captchaResult']) {
             $userModel = new UserModel();
             $user = $userModel->findByEmailAndPassword($_POST['email'], $_POST['password']);
 
@@ -71,15 +71,18 @@ class App
             } else {
                 echo 'Hibás felhasználónév vagy jelszó!';
             }
-
         } else {
+            $captcha1 = rand(1, 10);
+            $captcha2 = rand(1, 10);
+            $captcha3 = $captcha1 + $captcha2;
+
             $smarty = new Smarty();
             $smarty->setTemplateDir(__DIR__ . '/../templates/backend');
             $smarty->setCompileDir(__DIR__ . '/../var/smarty/compile');
             $smarty->setCacheDir(__DIR__ . '/../var/smarty/cache');
             $smarty->setConfigDir(__DIR__ . '/../var/smarty/config');
 
-            $smarty->display('login.tpl');
+            $smarty->display('login.tpl', ['captcha1' => $captcha1, 'captcha2' => $captcha2, 'captcha3' => $captcha3]);
         }
     }
 }
