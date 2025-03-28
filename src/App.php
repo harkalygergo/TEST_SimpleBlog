@@ -61,7 +61,7 @@ class App
 
     public function login()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_POST['password']) && $_POST['honeypot']==='') {
             $userModel = new UserModel();
             $user = $userModel->findByEmailAndPassword($_POST['email'], $_POST['password']);
 

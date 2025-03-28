@@ -6,6 +6,7 @@
             <div class="col">
                 <h1>Bejelentkezés</h1>
                 <form action="/?action=login" method="post">
+                    <input type="hidden" name="honeypot" id="honeypot" value="">
                     <div class="mb-3">
                         <label for="email" class="form-label">E-mail cím</label>
                         <input type="email" class="form-control" id="email" name="email" required>
