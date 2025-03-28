@@ -28,12 +28,13 @@ class UserModel extends BaseModel
         $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
         $stmt = $this->db->prepare("
-            INSERT INTO {$this->table} (email, password) 
-            VALUES (:email, :password)
+            INSERT INTO {$this->table} (email, password, is_active) 
+            VALUES (:email, :password, :is_active)
         ");
 
         $stmt->bindParam(':email', $data['email']);
         $stmt->bindParam(':password', $data['password']);
+        $stmt->bindParam(':is_active', $data['is_active'], PDO::PARAM_INT);
         $stmt->execute();
 
         return $this->db->lastInsertId();
@@ -55,11 +56,12 @@ class UserModel extends BaseModel
 
         $stmt = $this->db->prepare("
             UPDATE {$this->table} 
-            SET email = :email
+            SET email = :email, is_active = :is_active
             WHERE id = :id
         ");
 
         $stmt->bindParam(':email', $data['email']);
+        $stmt->bindParam(':is_active', $data['is_active'], PDO::PARAM_INT);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
         return $stmt->execute();

@@ -24,6 +24,13 @@
                     <label for="password" class="form-label">Jelszó</label>
                     <input type="password" class="form-control" id="password" name="password" value="">
                 </div>
+                <div class="mb-3">
+                    <label for="is_active" class="form-label">Státusz</label>
+                    <select class="form-select" id="is_active" name="is_active" required>
+                        <option value="1">Aktív</option>
+                        <option value="0">Inaktív</option>
+                    </select>
+                </div>
                 <button type="submit" class="btn btn-primary">Mentés</button>
             </form>
         </main>
